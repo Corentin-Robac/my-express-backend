@@ -1,11 +1,10 @@
-// scripts/setupRepo.js
 const { execSync } = require('child_process');
 const dotenv = require('dotenv');
 const path = require('path');
 const fs = require('fs');
 
-// Charger les variables depuis .env
-dotenv.config({ path: path.resolve(__dirname, '../backend/.env') });
+const envPath = path.resolve(__dirname, '../.env');
+dotenv.config({ path: envPath });
 
 const GITHUB_USERNAME = process.env.GITHUB_USERNAME;
 const GITHUB_REPO = process.env.GITHUB_REPO;
@@ -16,11 +15,17 @@ if (!GITHUB_USERNAME || !GITHUB_REPO) {
 }
 
 try {
-  // Exécuter les commandes git
-  execSync(`cd backend && git remote remove origin && git init && git remote add origin https://github.com/${GITHUB_USERNAME}/${GITHUB_REPO}.git`, { stdio: 'inherit' });
+  try {
+    execSync('git remote remove origin', { cwd: '..', stdio: 'ignore' });
+  } catch (error) {
+    console.log('Aucun remote nommé origin à supprimer.');
+  }
 
-  // Créer .gitignore et y inscrire .env
-  const gitignorePath = path.resolve(__dirname, '../backend/.gitignore');
+  execSync('git init', { cwd: '..' });
+  const remoteUrl = `https://github.com/${GITHUB_USERNAME}/${GITHUB_REPO}.git`;
+  execSync(`git remote add origin ${remoteUrl}`, { cwd: '..' });
+
+  const gitignorePath = path.resolve(__dirname, '../.gitignore');
   const gitignoreContent = '.env\n';
 
   if (!fs.existsSync(gitignorePath)) {

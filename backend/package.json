@@ -4,9 +4,9 @@
   "description": "Express backend with simple frontend",
   "main": "server.js",
   "scripts": {
-    "install-dependencies": "cd backend && npm install",
-    "setup-repo": "cd backend && node ../scripts/setupRepo.js",
-    "start-server": "cd backend && node server.js"
+    "install-dependencies": "npm install",
+    "setup-repo": "node scripts/setupRepo.js",
+    "start-server": "node server.js"
   },
   "dependencies": {
     "dotenv": "^10.0.0",

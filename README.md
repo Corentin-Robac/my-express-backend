@@ -19,21 +19,22 @@ git clone https://github.com/Corentin-Robac/my-express-backend.git
 Navigate to the backend folder and install Node.js dependencies:
 
 ```bash
+cd my-express-backend/backend
 npm run install-dependencies
 ```
 
 ### 3. Configure GitHub credentials
 Edit the .env file with your GitHub credentials:
 
-    GITHUB_USERNAME: Your GitHub username.
-    GITHUB_REPO: The name of your GitHub repository.
-
-Make sure your .env file contains the following structure:
-
 ```bash
 PORT=3000
 GITHUB_USERNAME=your-github-username
 GITHUB_REPO=your-repo-name
+```
+
+### 3.5. Add .env file to .gitignore
+```bash
+.env
 ```
 
 ### 4. Set up your Git repository
