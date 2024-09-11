@@ -33,6 +33,7 @@ GITHUB_REPO=your-repo-name
 ```
 
 ### 3.5. Add .env file to .gitignore
+
 ```bash
 .env
 ```
@@ -44,8 +45,16 @@ To remove the current Git origin and link your own GitHub repository using the i
 npm run setup-repo
 ```
 
+### 4.5. Push to Git repo
+Create your repo on Github with same credentials from .env file then run:
+
+```bash
+cd ..
+git push -u origin main
+```
+Take care than head branch is "main" instead of "master"
+
 ### 5. Start the server
-To remove the current Git origin and link your own GitHub repository using the information in the .env file, run the following:
 
 ```bash
 npm run start-server
