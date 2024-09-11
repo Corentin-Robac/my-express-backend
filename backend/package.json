@@ -1,0 +1,15 @@
+{
+  "name": "my-express-backend",
+  "version": "1.0.0",
+  "description": "Express backend with simple frontend",
+  "main": "server.js",
+  "scripts": {
+    "install-dependencies": "cd backend && npm install",
+    "setup-repo": "cd backend && node ../scripts/setupRepo.js",
+    "start-server": "cd backend && node server.js"
+  },
+  "dependencies": {
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1"
+  }
+}
